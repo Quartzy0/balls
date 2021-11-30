@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balls</title>
+    <script src="game.js"></script>
+    <link rel="stylesheet" type="text/css" href="cool.css">
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="center container" id="gameover">
+        <p id="gameover-text">Game over</p>
+        <button id="gameover-btn" onclick="undead()">Try again?</button>
+    </div>
+
+    <script>
+        init();
+        window.onEachFrame(run);
+    </script>
+</body>
+</html>
