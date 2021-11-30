@@ -36,6 +36,10 @@ function undead(){
     dead = false;
     gameOverText.style.display = "none";
     timeStart = new Date().getTime();
+    playtime = 0;
+    timerEl.innerText = "0s";
+    dodges = 0;
+    dodgeEl.innerText = "Dodges: 0";
 }
 
 function generateNewBall(){
@@ -149,8 +153,10 @@ function run(){
         console.log("fps: " + fps + " balls: " + balls.length);
         fps = 0;
         lastFpsMeasure = new Date().getTime();
-        playtime++;
-        timerEl.innerText = playtime + "s";
+        if(!dead){
+            playtime++;
+            timerEl.innerText = playtime + "s";
+        }
     }
 }
 
