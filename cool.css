@@ -3,7 +3,10 @@ html, body {
     height: 100%;
     margin: 0;
     overflow: hidden;
-    background-color: #62606d
+    background-color: #62606d;
+    font-size: 25px;
+    color: white;
+    font-family: "Sans-serif";
 }
 
 canvas{
@@ -33,6 +36,15 @@ canvas{
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%);
+}
+
+.top{
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 #gameover{

@@ -6,6 +6,11 @@ let mouseX = 9999, mouseY = 9999;
 let ctx = {};
 let canvas = {};
 let gameOverText = {};
+let timerEl = {};
+let dodgeEl = {};
+
+let playtime = 0;
+let dodges = 0;
 let fps = 0;
 
 let dead = false;
@@ -65,6 +70,8 @@ function init(){
     ctx = canvas.getContext("2d");
     gameOverText = document.getElementById("gameover");
     gameOverText.style.display = "none";
+    timerEl = document.getElementById("timer");
+    dodgeEl = document.getElementById("dodged");
 
     canvas.addEventListener('mousemove', e => {
         var rect = canvas.getBoundingClientRect();
@@ -96,21 +103,22 @@ function update(){
         generateNewBall();
     }
 
-    for (const i in balls) {
-        balls[i].x += balls[i].velX;
-        balls[i].y += balls[i].velY;
-
+    for (let i = 0; i < balls.length; i++) {
         if(Math.abs(balls[i].x - mouseX) < balls[i].radius && Math.abs(balls[i].y - mouseY) < balls[i].radius) {
             console.log("You died");
             dead = true;
             gameOverText.style.display = "block";
             break;
         }
-
+        
         if(balls[i].x - balls[i].radius > canvas.width || balls[i].y - balls[i].radius > canvas.height ||
             balls[i].x + balls[i].radius < 0 || balls[i].y + balls[i].radius < 0) {
                 balls.splice(i, 1);
+                dodges++;
+                dodgeEl.innerText = "Dodges: " + dodges;
         }
+        balls[i].x += balls[i].velX;
+        balls[i].y += balls[i].velY;
     }
 }
 
@@ -141,6 +149,8 @@ function run(){
         console.log("fps: " + fps + " balls: " + balls.length);
         fps = 0;
         lastFpsMeasure = new Date().getTime();
+        playtime++;
+        timerEl.innerText = playtime + "s";
     }
 }
 
