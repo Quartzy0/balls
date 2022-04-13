@@ -120,6 +120,7 @@ function update(){
                 balls.splice(i, 1);
                 dodges++;
                 dodgeEl.innerText = "Dodges: " + dodges;
+                continue;
         }
         balls[i].x += balls[i].velX;
         balls[i].y += balls[i].velY;
